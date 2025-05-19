@@ -68,3 +68,19 @@ exports.analyzeJobMatch = async (req, res) => {
     res.status(500).json({ message: 'Failed to analyze job match', error: error.message });
   }
 };
+
+
+exports.getRecommendedJobs = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    // For now, just return all jobs for demo
+    const jobs = await db.Job.findAll({
+      limit: 10,
+      order: [['relevanceScore', 'DESC']],
+    });
+    res.json(jobs);
+  } catch (error) {
+    console.error('Error getting recommended jobs:', error);
+    res.status(500).json({ message: 'Failed to get recommended jobs' });
+  }
+};

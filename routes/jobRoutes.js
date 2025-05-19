@@ -1,17 +1,18 @@
-const express = require('express');
-const jobController = require('../controllers/jobController');
-const router = express.Router();
+// const express = require('express');
+// const jobController = require('../controllers/jobController');
+// const router = express.Router();
 
-// Search for jobs
-router.post('/search', jobController.searchJobs);
+// console.log('jobController:', jobController);
+// // Search for jobs
+// router.post('/search', jobController.searchJobs);
 
-// Get job details
-router.get('/:id', jobController.getJobById);
+// // Get recommended jobs for user
+// // router.get('/recommended/:userId', jobController.getRecommendedJobs);
 
-// Analyze job match with user profile
-router.get('/:jobId/analyze/:userId', jobController.analyzeJobMatch);
+// // Analyze job match with user profile
+// router.get('/:jobId/analyze/:userId', jobController.analyzeJobMatch);
 
-// Get recommended jobs for user
-router.get('/recommended/:userId', jobController.getRecommendedJobs);
+// // Get job details
+// router.get('/:id', jobController.getJobById);
 
-module.exports = router;
+// module.exports = router;

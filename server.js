@@ -16,14 +16,18 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use('/api/jobs', jobRoutes);
-app.use('/api/users', userRoutes);
-app.use('/api/applications', applicationRoutes);
+// app.use('/api/users', userRoutes);
+// app.use('/api/applications', applicationRoutes);
 
 // Database sync
 db.sequelize.sync().then(() => {
   console.log('Database synced successfully');
 }).catch(err => {
   console.error('Failed to sync database:', err);
+});
+
+app.use((req, res) => {
+  res.status(404).json({ message: 'Route not found' });
 });
 
 app.listen(PORT, () => {
